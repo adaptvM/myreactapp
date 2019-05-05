@@ -1,17 +1,32 @@
 //JSX 
-import React from 'react';
-import ReactDOM from 'react-dom' 
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom'
+
+import JSON from './db.json';
 
 //components
 import Header from './components/header'
-const App = () => {
-    return (
-        <div>
-            <Header />
-        </div>
-     
-    )
+import NewsList from './components/news_list'
+
+class App extends Component {
+
+    state = {
+        news: JSON
+    }
+
+    render() {
+        console.log(this.state.news)
+        return (
+            <div>
+                <Header />
+                <NewsList news={this.state.news} />
+
+            </div>
+
+        )
+    }
 }
 
-ReactDOM.render(<App/>, document.querySelector('#root'))
+
+ReactDOM.render(<App />, document.querySelector('#root'))
 
